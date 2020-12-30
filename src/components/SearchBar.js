@@ -12,7 +12,7 @@ const SearchBar = (props) => {
       }
     
     useEffect(() => {
-        if (searchValue.trim() != ""){
+        if (searchValue.trim() !== ""){
             let searchString = searchValue.trim().replace(/ /g, '%20')
             axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=dd7713c4&s=${searchString}&type=movie`)
             .then(res => {
@@ -27,7 +27,9 @@ const SearchBar = (props) => {
 
     return (
         <div>
-            <form>
+            <form onSubmit={(e) => {
+                e.preventDefault()
+            }}> 
                 <input
                     type='text'
                     name='searchMovie'

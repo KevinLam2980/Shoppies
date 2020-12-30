@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from './SearchBar'
 import SearchResults from './SearchResults'
+import Nominations from './Nominations'
 
 const Dashboard = () => {
 
@@ -8,6 +9,7 @@ const Dashboard = () => {
         <div>
             <SearchBar/>
             <SearchResults/>
+            <Nominations />
         </div>
     )
 }
