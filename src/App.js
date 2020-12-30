@@ -5,10 +5,6 @@ import axios from 'axios'
 import './App.css';
 
 function App() {
-  const [movies, setMovies] = useState([])
-
-
-
 
   return (
     <div className="App">
