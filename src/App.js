@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Dashboard from './components/Dashboard'
 import {Route} from 'react-router-dom'
+import axios from 'axios'
 import './App.css';
 
 function App() {
+  const [movies, setMovies] = useState([])
+
+
+
+
   return (
     <div className="App">
-      <h1>haroot</h1>
-      
+      <Dashboard/>
     </div>
   );
 }
