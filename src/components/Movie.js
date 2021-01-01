@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {nominateMovie, getMovieInfo} from '../state/actions'
 import styled from 'styled-components'
@@ -25,65 +25,57 @@ const StyledMovie = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 70%;
+        width: 85%;
         padding: 1rem;
     }
     button {
         height: 150px;
         width: 15%;
+        background-color: #E50914;
+        border: none;
+        outline: none;
     }
-
     border-bottom: 1px solid black;
+    transition: 0.75s;
+    &:hover {
+        box-shadow: 0 0 7px 2px #E50914;
+        z-index: 2;
+    }
 `
 
 const StyledNominatedMovie = styled.div`
     display: flex;
     flex-direction: column;
     width: 200px;
-    height: 300px;
-    align-items: center;
-    justify-content: space-evenly;
+    height: 275px;
+    justify-content: center;
     text-align: center;
     color: white;
-    border: 2px solid blue;
+    background-color: #1f1f1f;
     img {
         width: 100%;
         height: 80%;
+        align-self: flex-start
     }
-    .nominatedMovieDetails {
+    .nominatedMovieName {
         height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `
 
 
 const Movie = (props) => {
     const {movie, nominateMovie, nominatedMovies, nominated, getMovieInfo} = props
-    // const [hovered, setHovered] = useState(false);
-
-    const toggleHover = (e) => {
-        e.stopPropagation()
-        // if(document.querySelectorAll('.active').length != 0){
-        //     let selectedEls = document.querySelectorAll('.active')
-        //     selectedEls.forEach(element => {
-        //         element.classList.remove('active');
-        //     });
-            
-        // }
-        // console.log('here')
-        // setHovered(!hovered);
-
-    }
     
     const choosediv = (e) => {
-        // e.stopPropagation()
         if(document.querySelectorAll('.active').length != 0){
             let selectedEls = document.querySelectorAll('.active')
             selectedEls.forEach(element => {
                 element.classList.remove('active')
             });
         }
-        // setHovered(!hovered);
-        // e.target.classList.toggle('active')
         document.querySelector(`#${movie.imdbID}`).classList.toggle('active')
 }
     const nominate = () => {
@@ -95,31 +87,32 @@ const Movie = (props) => {
         }
     }
 
+    useEffect(() => {
+        if (nominatedMovies.length !== 0){
+            if(document.querySelectorAll('.active').length !== 0){
+                let selectedEls = document.querySelectorAll('.active')
+                selectedEls.forEach(element => {
+                    element.classList.remove('active')
+                })
+            }
+            document.querySelector(`#${nominatedMovies[nominatedMovies.length - 1].imdbID}`).classList.add('active')
+            getMovieInfo(`${nominatedMovies[nominatedMovies.length - 1].imdbID}`)
+        }
+    }, [nominatedMovies])
+
     if (nominated === true){
         return (
             <StyledNominatedMovie 
-            // className="nominatedMovie"
-            // onClick={this.addActiveClass.bind(this)}
-            // className={hovered ? 'nominatedMovie active' : 'nominatedMovie'}
             id={movie.imdbID}
             className="nominatedMovie"
-            onMouseEnter={e => toggleHover(e)}
-            onMouseLeave={e => toggleHover(e)}
             onClick={e => {
                 choosediv(e)
                 getMovieInfo(movie.imdbID)
             }}
           >
                 <img src={movie.Poster !== 'N/A' ? movie.Poster : 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'} alt={`${movie.Title} movie poster`} />
-                <div className='nominatedMovieDetails'>
-                    <div className='nominatedMovieName'>
-                        <h2>{`${movie.Title} (${movie.Year})`}</h2>
-                    </div>
-                    {/* <div className='nominatedMovieButtons'>
-                        <button>View</button>
-                        <button>Remove</button>
-                    </div> */}
-                
+                <div className='nominatedMovieName'>
+                    <h2>{`${movie.Title} (${movie.Year})`}</h2>
                 </div>
             </StyledNominatedMovie>
     )   
@@ -134,10 +127,8 @@ const Movie = (props) => {
                     <div className='movieName'>
                         <h2>{`${movie.Title} (${movie.Year})`}</h2>
                     </div>
-                    <button>View</button>
                     <button>Add</button>
                 </div>
-            
             </StyledMovie>
     )
     }

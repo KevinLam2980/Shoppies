@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {removeNominatedMovie} from '../state/actions'
 import styled from 'styled-components'
 
 const StyledMovieInfo = styled.div`
@@ -45,7 +46,12 @@ overflow-y: hidden;
 `
 
 const MovieInfo = (props) => {
-    const {movieInfo} = props
+    const {movieInfo, removeNominatedMovie} = props
+
+    const RemoveMovie = () => {
+        removeNominatedMovie(movieInfo)
+    }
+
     if (movieInfo !== null) {
           return (
         <StyledMovieInfo id='movieData'>
@@ -76,7 +82,9 @@ const MovieInfo = (props) => {
            </div>
             <div id='movieButtons'>
                 <button>IMDB</button>
-                <button>Remove</button>
+                <button
+                onClick={RemoveMovie}
+                >Remove</button>
             </div>
     
         </StyledMovieInfo>
@@ -96,4 +104,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps, {})(MovieInfo)
+export default connect(mapStateToProps, {removeNominatedMovie})(MovieInfo)

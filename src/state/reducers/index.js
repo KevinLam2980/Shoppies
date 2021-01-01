@@ -1,24 +1,39 @@
 import {
-    MOVIE_SEARCH_SUCCESS,
     NOMINATE_MOVIE,
     GET_MOVIE_START,
     GET_MOVIE_SUCCESS,
-    GET_MOVIE_FAIL
+    GET_MOVIE_FAIL,
+    REMOVE_MOVIE,
+    SEARCH_START,
+    SEARCH_MOVIE_SUCCESS,
+    SEARCH_MOVIE_FAIL
         } from '../actions'
 
 const initialAppState = {
     searchResults: [],
     nominatedMovies: [],
     movieInfo: null,
-    getInfoLoading: false
+    getInfoLoading: false,
+    movieSearchLoading: false,
 }
 
 export const shoppiesReducer = (state = initialAppState, action) => {
     switch(action.type) {
-        case MOVIE_SEARCH_SUCCESS:
+        case SEARCH_START:
+            return {
+                ...state,
+                movieSearchLoading: true
+            }
+        case SEARCH_MOVIE_SUCCESS:
             return {
                 ...state, 
-                searchResults: action.payload
+                searchResults: action.payload,
+                movieSearchLoading: false
+            }
+        case SEARCH_MOVIE_FAIL:
+            return {
+                ...state,
+                movieSearchLoading: false
             }
         case NOMINATE_MOVIE:
             return {
@@ -27,6 +42,15 @@ export const shoppiesReducer = (state = initialAppState, action) => {
                 searchResults: state.searchResults.filter(movie => {
                     return movie.imdbID !== action.payload.imdbID
                 })
+            }
+        case REMOVE_MOVIE:
+            return {
+                ...state,
+                nominatedMovies: state.nominatedMovies.filter(movie => {
+                    return movie.imdbID !== action.payload.imdbID
+                }),
+                // searchResults: [action.payload, ...state.searchResults],
+                movieInfo: null
             }
         case GET_MOVIE_START:
             return {

@@ -10,25 +10,26 @@ const StyledNominations = styled.div`
     justify-content: center;
     align-items: center;
     perspective: 900px;
-    padding: 2rem;
-
+    padding: 1rem;
 
     .nominatedMovie {
-        transition: 0.5s;
+        transition: 0.5s ease-out;
         transform: rotateY(45deg);
         z-index: -2;
         --webkit-transform: rotateY(45deg);
+        box-shadow: -15px 10px 10px black;
     }
     .active{
-        transform: rotateY(0) scale(1.2);
-        --webkit-transform: rotateY(0) scale(1.2);
-        background: red;
+        transform: rotateY(0) scale(1.1);
+        --webkit-transform: rotateY(0) scale(1.1);
         z-index: 2;
+        box-shadow: 0 10px 10px black;
     }
     .active ~ .nominatedMovie{
         transform: rotateY(-45deg);
         --webkit-transform: rotateY(-45deg);
-        z-index: -2;
+        z-index: 1;
+        box-shadow: 15px 10px 10px black;
     }
 `
 

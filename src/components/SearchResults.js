@@ -7,8 +7,8 @@ const StyledSearchResults = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    height: 100%;
-    padding-bottom: 100px;
+    height: calc(100vh - 100px);
+    padding-bottom: 101px;
     border-right: 2px solid #E50914;
 `
 
@@ -23,16 +23,17 @@ const SearchResults = (props) => {
         })
         setMovieIds(movies)
     }, [nominatedMovies])
+    
     return (
         <StyledSearchResults>
             {
-                searchRes && searchRes.length > 0 ? searchRes.filter(movie => {
-                    return !movieIds.includes(movie.imdbID)
-                })
+                searchRes && searchRes.length > 0 ? searchRes
                 .map(movie => {
-                    return (
-                        <Movie movie={movie} key={movie.imdbID}/>
-                    )
+                    if (!movieIds.includes(movie.imdbID)) {
+                        return (
+                            <Movie movie={movie} key={movie.imdbID}/>
+                        )
+                    }
                 }) : null
             }
         </StyledSearchResults>
