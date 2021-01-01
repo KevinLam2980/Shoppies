@@ -18,13 +18,13 @@ overflow-y: hidden;
     flex-direction: column;
     overflow-y: scroll;
     margin-bottom: 1rem;
-    height: calc(100% - 200px);
+    height: calc(100% - 175px);
     .movieDescription {
         width: 100%;
         margin-bottom: 1.5rem;
         padding: 1rem;
         box-shadow: 0 7px 7px -6px #E50914;
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(20,20,20);
         p {
             padding-top: 0.5rem;
             line-height: 1.5;
@@ -35,7 +35,7 @@ overflow-y: hidden;
         width: 100%;
         line-height: 1.2;
         padding: 1rem;
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(20,20,20);
         box-shadow: 0 7px 7px -6px #E50914;
     }
     .movieDetailsLeft, .movieDetailsRight, .movieDetailsMiddle{
@@ -48,9 +48,32 @@ overflow-y: hidden;
         padding: 0.5rem 0.75rem;
         border-bottom: 1px solid #1f1f1f;
     }
-    #movieButtons {
+}
+button.removeBTN {
+    font-size: 1rem;
+    border: 2px solid #E50914;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    &:active, &:focus {
+        outline: 0;
     }
 }
+.imdbBTN {
+    font-size: 1rem;
+    border: 2px solid #E50914;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    &:active, &:focus {
+        outline: 0;
+    }
+}
+
 
 `
 
@@ -94,8 +117,14 @@ const MovieInfo = (props) => {
                 </div>
            </div>
             <div id='movieButtons'>
-                <button>IMDB</button>
+                <a 
+                className='imdbBTN'
+                href={`https://www.imdb.com/title/${movieInfo.imdbID}/?ref_=fn_al_tt_1`}
+                target="_blank"
+                rel="noopener noreferrer"
+                >IMDB</a>
                 <button
+                className='removeBTN'
                 onClick={RemoveMovie}
                 >Remove</button>
             </div>

@@ -9,7 +9,7 @@ const StyledNominations = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 900px;
+    perspective: 700px;
     padding: 1rem;
 
     .nominatedMovie {

@@ -11,6 +11,7 @@ const StyledMovie = styled.div`
     align-items: center;
     color: white;
     text-align: center;
+    background-color: rgba(20,20,20);
     img {
         width: 120px;
         height: 150px;
@@ -38,6 +39,7 @@ const StyledMovie = styled.div`
     border-bottom: 1px solid black;
     transition: 0.75s;
     &:hover {
+        cursor: pointer;
         box-shadow: 0 0 7px 2px #E50914;
         z-index: 2;
     }
@@ -46,12 +48,13 @@ const StyledMovie = styled.div`
 const StyledNominatedMovie = styled.div`
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 275px;
+    width: 175px;
+    height: 240px;
     justify-content: center;
     text-align: center;
     color: white;
-    background-color: #1f1f1f;
+    background-color: rgba(20,20,20);
+    cursor: pointer;
     img {
         width: 100%;
         height: 80%;

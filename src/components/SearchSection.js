@@ -14,7 +14,7 @@ const StyledSearchSection = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #1f1f1f;
+        background-color: rgba(20,20,20);
         width: 100%;
         height: 100px;
         border-bottom: 2px solid #E50914;

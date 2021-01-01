@@ -16,7 +16,7 @@ const StyledNominationSection = styled.div`
         width: 100%;
         border-bottom: 2px solid #E50914;
         display: flex;
-        background-color: #1f1f1f;
+        background-color: rgba(20,20,20);
         justify-content: center;
         align-items: center;
         h2 {
