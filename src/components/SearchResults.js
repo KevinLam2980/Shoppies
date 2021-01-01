@@ -1,6 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import SearchMovie from './SearchMovie'
+import Movie from './Movie'
+import styled from 'styled-components'
+
+const StyledSearchResults = styled.div`
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+    padding-bottom: 100px;
+    border-right: 2px solid #E50914;
+`
 
 const SearchResults = (props) => {
     const [movieIds, setMovieIds] = useState([])
@@ -14,18 +24,18 @@ const SearchResults = (props) => {
         setMovieIds(movies)
     }, [nominatedMovies])
     return (
-        <div>
+        <StyledSearchResults>
             {
                 searchRes && searchRes.length > 0 ? searchRes.filter(movie => {
                     return !movieIds.includes(movie.imdbID)
                 })
                 .map(movie => {
                     return (
-                        <SearchMovie movie={movie} key={movie.imdbID}/>
+                        <Movie movie={movie} key={movie.imdbID}/>
                     )
                 }) : null
             }
-        </div>
+        </StyledSearchResults>
     )
 }
 

@@ -1,11 +1,16 @@
 import {
     MOVIE_SEARCH_SUCCESS,
-    NOMINATE_MOVIE
+    NOMINATE_MOVIE,
+    GET_MOVIE_START,
+    GET_MOVIE_SUCCESS,
+    GET_MOVIE_FAIL
         } from '../actions'
 
 const initialAppState = {
     searchResults: [],
-    nominatedMovies: []
+    nominatedMovies: [],
+    movieInfo: null,
+    getInfoLoading: false
 }
 
 export const shoppiesReducer = (state = initialAppState, action) => {
@@ -22,6 +27,23 @@ export const shoppiesReducer = (state = initialAppState, action) => {
                 searchResults: state.searchResults.filter(movie => {
                     return movie.imdbID !== action.payload.imdbID
                 })
+            }
+        case GET_MOVIE_START:
+            return {
+                ...state,
+                getInfoLoading: true
+            }
+        case GET_MOVIE_SUCCESS:
+            return {
+                ...state,
+                getInfoLoading: false,
+                movieInfo: action.payload
+            }
+        case GET_MOVIE_FAIL:
+            return {
+                ...state,
+                getInfoLoading: false,
+                movieInfo: null
             }
         default:
             return state
