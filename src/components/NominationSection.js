@@ -38,8 +38,8 @@ const NominationSection = () => {
                 <h2>Nominations:</h2>
             </div>
             <div id="nominatedMovieView">
- <Nominations/>
-            <MovieInfo/>
+                <Nominations/>
+                <MovieInfo/>
             </div>
            
         </StyledNominationSection>

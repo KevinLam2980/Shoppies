@@ -17,7 +17,7 @@ const StyledMovie = styled.div`
         border: 1px solid black;
     }
     .movieDetails {
-        width: 100%;
+        width: calc(100% - 120px);
         display: flex;
         justify-content: space-evenly;
     }
