@@ -56,6 +56,7 @@ const Nominations = (props) => {
                 message: `5 movies have been chosen, click submit to send in your choices!`
             })
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nominatedMovies])
 
     return (
