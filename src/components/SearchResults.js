@@ -10,6 +10,10 @@ const StyledSearchResults = styled.div`
     height: calc(100vh - 100px);
     padding-bottom: 51px;
     border-right: 2px solid #E50914;
+    @media (max-width: 850px) {
+        border: none;
+        padding-bottom: 1px;
+    }
 `
 
 const SearchResults = (props) => {

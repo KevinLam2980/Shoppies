@@ -21,6 +21,13 @@ const StyledDashboard = styled.div`
         height: 100%;
         width: 100%;
     }
+    @media (max-width: 850px) {
+        height: 100%;
+        overflow: scroll;
+        div#mainSection {
+            flex-direction: column
+        }
+}
 `
 
 const Dashboard = () => {

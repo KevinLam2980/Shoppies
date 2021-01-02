@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const StyledMovieInfo = styled.div`
 height: 65%;
-padding: 0 2rem;
+padding: 1rem 2rem 0;
 color: white;
 display: flex;
 flex-direction: column;
@@ -48,6 +48,11 @@ overflow-y: hidden;
         padding: 0.5rem 0.75rem;
         border-bottom: 1px solid #1f1f1f;
     }
+    @media (max-width: 1050px) {
+        .movieDetails {
+             font-size: 0.9rem;
+        }
+    }
 }
 button.removeBTN {
     transition: 0.7s;
@@ -87,9 +92,12 @@ button.removeBTN {
         box-shadow: 0 0 7px 2px black;
     }
 }
-
-
-`
+    @media (max-width: 1050px) {
+        .imdbBTN, button.removeBTN {
+              font-size: 0.8rem;
+        }
+}
+    `
 
 const MovieInfo = (props) => {
     const {movieInfo, removeNominatedMovie} = props
@@ -108,6 +116,7 @@ const MovieInfo = (props) => {
                 <div className='movieDetails'>
                     <div className='movieDetailsLeft'>
                         <p>Genre: {movieInfo.Genre}</p>
+                        <p>Rated: {movieInfo.Rated}</p>
                         <p>Director: {movieInfo.Director}</p>
                         <p>Released: {movieInfo.Released}</p>
                         <p>Writer(s): {movieInfo.Writer}</p>
@@ -117,13 +126,10 @@ const MovieInfo = (props) => {
                         <p>Production: {movieInfo.Production}</p>
                         <p>Award(s): {movieInfo.Awards}</p>
                         <p>Country: {movieInfo.Country}</p>
-                        <p>Language: {movieInfo.Language}</p>
-
                     </div>
-
                     <div className='movieDetailsRight'>
+                        <p>Language: {movieInfo.Language}</p>
                         <p>Runtime: {movieInfo.Runtime}</p>
-                        <p>Rated: {movieInfo.Rated}</p>
                         <p>Metascore: {movieInfo.Metascore}</p>
                         <p>imdbRating: {movieInfo.imdbRating}</p>
                         <p>imdbVotes: {movieInfo.imdbVotes}</p>

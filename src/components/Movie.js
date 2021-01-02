@@ -53,17 +53,36 @@ const StyledMovie = styled.div`
             border: none;
             overflow: hidden;
         }
+    @media (max-width: 850px) {
+        height: 100px;
+        img {
+            height: 100px;
+        }
+        button.addBTN {
+            height: 100px;
+            background-color: #E50914;
+            border: 1px solid black;
+            outline: none;
+            transition: 0.6s ease-out;
+            display: hidden;
+            overflow: hidden;
+            width: 15%;
+            padding: 0;
+    }
+    }
 `
 
 const StyledNominatedMovie = styled.div`
     display: flex;
     flex-direction: column;
-    width: 175px;
-    height: 240px;
+    min-height: 150px;
+    max-width: 175px;
+    height: 90%;
     justify-content: center;
     text-align: center;
     color: white;
-    background-color: rgba(20,20,20);
+    background-color: rgba(20,20,20); 
+    font-size: 1rem;
     cursor: pointer;
     img {
         width: 100%;
@@ -75,7 +94,18 @@ const StyledNominatedMovie = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0.5rem;
     }
+    @media (max-width: 1200px) {
+    font-size: 0.85rem;
+  }
+    @media (max-width: 1050px) {
+        font-size: 0.8rem;
+    }
+  
+    /* @media (max-width: 768px) {
+    font-size: 0.5rem;
+  } */
 `
 
 
