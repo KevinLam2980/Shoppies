@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import Movie from './Movie'
 import styled from 'styled-components'
+import { useNotification } from './notifications/NotificationsProvider'
 
 const StyledNominations = styled.div`
     width: 100%;
@@ -45,11 +46,22 @@ const StyledNominations = styled.div`
 `
 
 const Nominations = (props) => {
+    const {nominatedMovies} = props
+    const dispatchNotification = useNotification()
+
+    useEffect(() => {
+        if (nominatedMovies.length === 5) {
+            dispatchNotification({
+                type: "INFO",
+                message: `5 movies have been chosen, click submit to send in your choices!`
+            })
+        }
+    }, [nominatedMovies])
 
     return (
         <StyledNominations id="nominations">
             {
-                props.nominatedMovies && props.nominatedMovies.length > 0 ? props.nominatedMovies.map(movie => {
+                nominatedMovies && nominatedMovies.length > 0 ? nominatedMovies.map(movie => {
                     return (
                         <Movie movie={movie} key={movie.imdbID} nominated={true}/>
                     )

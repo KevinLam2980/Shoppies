@@ -129,4 +129,8 @@ button:active, button:focus, a:active, a:focus {
     background-color: red;
 }
 
+.notification-item.info .bar {
+    background-color: rgb(16, 62, 212);
+}
+
 @import url("https://fonts.googleapis.com/css?family=Bungee+Inline");

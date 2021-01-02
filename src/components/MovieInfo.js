@@ -62,7 +62,7 @@ overflow-y: hidden;
         }
     }
 }
-button.removeBTN {
+button.removeBTN, .submitBTN {
     transition: 0.7s;
     font-size: 1rem;
     border: 2px solid #E50914;
@@ -108,7 +108,7 @@ button.removeBTN {
     `
 
 const MovieInfo = (props) => {
-    const { movieInfo, removeNominatedMovie } = props
+    const { movieInfo, removeNominatedMovie, nominatedMovies } = props
     const dispatchNotification = useNotification()
 
     const RemoveMovie = () => {
@@ -116,6 +116,13 @@ const MovieInfo = (props) => {
         dispatchNotification({
             type: "SUCCESS",
             message: `'${movieInfo.Title}' removed from nominations`
+        })
+    }
+
+    const submitNominations = () => {
+        dispatchNotification({
+            type: "SUCCESS",
+            message: `Your nominations have been submited!`
         })
     }
 
@@ -155,11 +162,18 @@ const MovieInfo = (props) => {
                         href={`https://www.imdb.com/title/${movieInfo.imdbID}/?ref_=fn_al_tt_1`}
                         target="_blank"
                         rel="noopener noreferrer"
-                    >IMDB</a>
+                    >See on IMDB</a>
                     <button
                         className='removeBTN'
                         onClick={RemoveMovie}
-                    >Remove</button>
+                    >Remove movie</button>
+                    {
+                        nominatedMovies && nominatedMovies.length === 5 ? 
+                        <button
+                        className='submitBTN'
+                        onClick={submitNominations}
+                        >Submit nominations</button> : null
+                    }
                 </div>
 
             </StyledMovieInfo>
@@ -175,7 +189,8 @@ const MovieInfo = (props) => {
 
 const mapStateToProps = state => {
     return {
-        movieInfo: state.movieInfo
+        movieInfo: state.movieInfo,
+        nominatedMovies: state.nominatedMovies
     }
 }
 

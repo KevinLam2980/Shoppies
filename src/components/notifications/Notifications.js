@@ -15,7 +15,7 @@ const Notification = props => {
         clearInterval(id);
         return prev;
       });
-    }, 10);
+    }, 20);
 
     setIntervalID(id);
   };
@@ -51,7 +51,8 @@ const Notification = props => {
       onMouseEnter={handlePauseTimer}
       onMouseLeave={handleStartTimer}
       className={`notification-item ${
-        props.type === "SUCCESS" ? "success" : "error"
+        props.type === "SUCCESS" ? "success" : 
+        props.type === "INFO" ? "info" : "error"
       } ${exit ? "exit" : ""}`}
     >
       <p>{props.message}</p>
