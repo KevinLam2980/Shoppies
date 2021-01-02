@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchSection from './SearchSection'
-import Nominations from './Nominations'
 import NominationSection from './NominationSection'
 import Nav from './Nav'
 import styled from 'styled-components'

@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {removeNominatedMovie} from '../state/actions'
 import styled from 'styled-components'
+import {useNotification} from './notifications/NotificationsProvider'
 
 const StyledMovieInfo = styled.div`
 height: 65%;
@@ -101,9 +102,14 @@ button.removeBTN {
 
 const MovieInfo = (props) => {
     const {movieInfo, removeNominatedMovie} = props
+    const dispatchNotification = useNotification()
 
     const RemoveMovie = () => {
         removeNominatedMovie(movieInfo)
+        dispatchNotification({
+            type: "SUCCESS",
+            message: `'${movieInfo.Title}' removed from nominations`
+        })
     }
 
     if (movieInfo !== null) {

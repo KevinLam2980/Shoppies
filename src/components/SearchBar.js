@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {searchMovie} from '../state/actions'
-import axios from 'axios'
 import styled from 'styled-components'
 
 const StyledSearchBar = styled.div`
@@ -43,6 +42,7 @@ const SearchBar = (props) => {
             let searchString = searchValue.trim().replace(/ /g, '%20')
             searchMovie(searchString)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nominatedMovies, searchValue])
     
 

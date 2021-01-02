@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react'
-import {connect} from 'react-redux'
-import {nominateMovie, getMovieInfo} from '../state/actions'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { nominateMovie, getMovieInfo } from '../state/actions'
 import styled from 'styled-components'
+import {useNotification} from './notifications/NotificationsProvider'
 
 const StyledMovie = styled.div`
     display: flex;
@@ -58,16 +59,27 @@ const StyledMovie = styled.div`
         img {
             height: 100px;
         }
+        .movieDetails {
+        width: calc(100% - 75px);
+    }
         button.addBTN {
             height: 100px;
-            background-color: #E50914;
             border: 1px solid black;
             outline: none;
-            transition: 0.6s ease-out;
-            display: hidden;
-            overflow: hidden;
             width: 15%;
-            padding: 0;
+    }
+    }
+    @media (max-width: 430px) {
+        height: 100px;
+        img {
+            height: 100px;
+            width: 80px;
+        }
+        button.addBTN {
+            height: 100px;
+            border: 1px solid black;
+            outline: none;
+            width: 20%;
     }
     }
 `
@@ -110,29 +122,37 @@ const StyledNominatedMovie = styled.div`
 
 
 const Movie = (props) => {
-    const {movie, nominateMovie, nominatedMovies, nominated, getMovieInfo} = props
-    
+    const { movie, nominateMovie, nominatedMovies, nominated, getMovieInfo } = props
+    const dispatchNotification = useNotification()
+
     const choosediv = (e) => {
-        if(document.querySelectorAll('.active').length != 0){
+        if (document.querySelectorAll('.active').length !== 0) {
             let selectedEls = document.querySelectorAll('.active')
             selectedEls.forEach(element => {
                 element.classList.remove('active')
             });
         }
         document.querySelector(`#${movie.imdbID}`).classList.toggle('active')
-}
+    }
     const nominate = () => {
-        if (nominatedMovies.length < 5){
+        if (nominatedMovies.length < 5) {
             nominateMovie(movie)
+            dispatchNotification({
+                type: 'SUCCESS',
+                message: `'${movie.Title}' added to nominations.`
+            })
         }
         else {
-            console.log('there be too many bro')
+            dispatchNotification({
+                type: 'ERROR',
+                message: 'You can only nominate 5 movies.'
+            })
         }
     }
 
     useEffect(() => {
-        if (nominatedMovies.length !== 0){
-            if(document.querySelectorAll('.active').length !== 0){
+        if (nominatedMovies.length !== 0) {
+            if (document.querySelectorAll('.active').length !== 0) {
                 let selectedEls = document.querySelectorAll('.active')
                 selectedEls.forEach(element => {
                     element.classList.remove('active')
@@ -141,29 +161,30 @@ const Movie = (props) => {
             document.querySelector(`#${nominatedMovies[nominatedMovies.length - 1].imdbID}`).classList.add('active')
             getMovieInfo(`${nominatedMovies[nominatedMovies.length - 1].imdbID}`)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nominatedMovies])
 
-    if (nominated === true){
+    if (nominated === true) {
         return (
-            <StyledNominatedMovie 
-            id={movie.imdbID}
-            className="nominatedMovie"
-            onClick={e => {
-                choosediv(e)
-                getMovieInfo(movie.imdbID)
-            }}
-          >
+            <StyledNominatedMovie
+                id={movie.imdbID}
+                className="nominatedMovie"
+                onClick={e => {
+                    choosediv(e)
+                    getMovieInfo(movie.imdbID)
+                }}
+            >
                 <img src={movie.Poster !== 'N/A' ? movie.Poster : 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'} alt={`${movie.Title} movie poster`} />
                 <div className='nominatedMovieName'>
                     <h2>{`${movie.Title} (${movie.Year})`}</h2>
                 </div>
             </StyledNominatedMovie>
-    )   
+        )
     } else {
         return (
-            <StyledMovie 
-            className="movie"
-            onClick={nominate}
+            <StyledMovie
+                className="movie"
+                onClick={nominate}
             >
                 <img src={movie.Poster !== 'N/A' ? movie.Poster : 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'} alt={`${movie.Title} movie poster`} />
                 <div className='movieDetails'>
@@ -173,7 +194,7 @@ const Movie = (props) => {
                     <button className='addBTN'>Add</button>
                 </div>
             </StyledMovie>
-    )
+        )
     }
 
 }
@@ -182,6 +203,6 @@ const mapStateToProps = state => {
     return {
         nominatedMovies: state.nominatedMovies
     }
-  }
+}
 
-export default connect(mapStateToProps, {nominateMovie, getMovieInfo})(Movie)
+export default connect(mapStateToProps, { nominateMovie, getMovieInfo })(Movie)

@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore, applyMiddleware} from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux'
 import thunk from "redux-thunk"
-import {shoppiesReducer} from './state/reducers'
+import { shoppiesReducer } from './state/reducers'
+import NotificationsProvider from './components/notifications/NotificationsProvider'
 
 const store = createStore(shoppiesReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-    <Provider store={store}>
+  <Provider store={store}>
+    <NotificationsProvider>
       <React.StrictMode>
-       <App />
+        <App />
       </React.StrictMode>
-    </Provider>,
+    </NotificationsProvider>
+  </Provider>,
   document.getElementById('root')
 );
 

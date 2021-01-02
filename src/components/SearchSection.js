@@ -34,9 +34,9 @@ const SearchSection = () => {
     return (
         <StyledSearchSection id='searchSection'>
             <div id='searchHeader'>
-                <SearchBar/>
+                <SearchBar />
             </div>
-            <SearchResults/>
+            <SearchResults />
         </StyledSearchSection>
     )
 }

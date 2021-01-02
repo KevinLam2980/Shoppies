@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Container} from '../styles/CommonComponents'
+import { Container } from '../styles/CommonComponents'
 
 const StyledNav = styled.div`
     background-color: #E50914;
@@ -31,7 +31,7 @@ const Nav = () => {
                 <h2>Shoppies</h2>
             </Container>
         </StyledNav>
-        )
+    )
 }
 
 export default Nav
