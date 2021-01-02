@@ -20,7 +20,7 @@ export const removeNominatedMovie = movie => dispatch => {
 
 export const searchMovie = searchText => dispatch => {
     dispatch({type: SEARCH_START})
-    axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=dd7713c4&s=${searchText}&type=movie`)
+    axios.get(`https://www.omdbapi.com/?i=tt3896198&apikey=dd7713c4&s=${searchText}&type=movie`)
             .then(res => {
                 dispatch({type: SEARCH_MOVIE_SUCCESS, payload: res.data.Search})
             })
@@ -32,7 +32,7 @@ export const searchMovie = searchText => dispatch => {
 
 export const getMovieInfo = movieId => dispatch => {
     dispatch({type: GET_MOVIE_START})
-    axios.get( `http://www.omdbapi.com/?apikey=dd7713c4&i=${movieId}&plot=full`)
+    axios.get( `https://www.omdbapi.com/?apikey=dd7713c4&i=${movieId}&plot=full`)
     .then(res => {
         console.log(res.data)
         dispatch({type: GET_MOVIE_SUCCESS, payload: res.data})
