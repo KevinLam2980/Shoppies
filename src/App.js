@@ -1,7 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Dashboard from './components/Dashboard'
-import {Route} from 'react-router-dom'
-import axios from 'axios'
 import './App.css';
 
 function App() {

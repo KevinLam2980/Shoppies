@@ -47,3 +47,5 @@ table {
 button:active, button:focus, a:active, a:focus {
 	outline: none;
 }
+
+@import url("https://fonts.googleapis.com/css?family=Bungee+Inline");

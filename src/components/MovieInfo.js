@@ -4,7 +4,7 @@ import {removeNominatedMovie} from '../state/actions'
 import styled from 'styled-components'
 
 const StyledMovieInfo = styled.div`
-height: 60%;
+height: 65%;
 padding: 0 2rem;
 color: white;
 display: flex;
@@ -18,7 +18,7 @@ overflow-y: hidden;
     flex-direction: column;
     overflow-y: scroll;
     margin-bottom: 1rem;
-    height: calc(100% - 175px);
+    height: calc(100% - 125px);
     .movieDescription {
         width: 100%;
         margin-bottom: 1.5rem;
@@ -50,6 +50,7 @@ overflow-y: hidden;
     }
 }
 button.removeBTN {
+    transition: 0.7s;
     font-size: 1rem;
     border: 2px solid #E50914;
     border-radius: 10px;
@@ -60,8 +61,15 @@ button.removeBTN {
     &:active, &:focus {
         outline: 0;
     }
+    &:hover {
+        background-color: #E50914;
+        border: none;
+        color: black;
+        box-shadow: 0 0 7px 2px black;
+    }
 }
 .imdbBTN {
+    transition: 0.7s;
     font-size: 1rem;
     border: 2px solid #E50914;
     border-radius: 10px;
@@ -71,6 +79,12 @@ button.removeBTN {
     text-decoration: none;
     &:active, &:focus {
         outline: 0;
+    }
+    &:hover {
+        background-color: #E50914;
+        border: none;
+        color: black;
+        box-shadow: 0 0 7px 2px black;
     }
 }
 
@@ -95,15 +109,15 @@ const MovieInfo = (props) => {
                     <div className='movieDetailsLeft'>
                         <p>Genre: {movieInfo.Genre}</p>
                         <p>Director: {movieInfo.Director}</p>
+                        <p>Released: {movieInfo.Released}</p>
                         <p>Writer(s): {movieInfo.Writer}</p>
-                        <p>Actor(s): {movieInfo.Actors}</p>
                     </div>
                     <div className='movieDetailsMiddle'>
+                        <p>Actor(s): {movieInfo.Actors}</p>
                         <p>Production: {movieInfo.Production}</p>
                         <p>Award(s): {movieInfo.Awards}</p>
                         <p>Country: {movieInfo.Country}</p>
                         <p>Language: {movieInfo.Language}</p>
-                        <p>Released: {movieInfo.Released}</p>
 
                     </div>
 

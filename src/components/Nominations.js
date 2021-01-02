@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const StyledNominations = styled.div`
     width: 100%;
-    height: 40%;
+    height: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,18 +18,28 @@ const StyledNominations = styled.div`
         z-index: -2;
         --webkit-transform: rotateY(45deg);
         box-shadow: -15px 10px 10px black;
+        &:hover {
+            box-shadow: -15px 10px 10px #E50914;
+        }
     }
     .active{
         transform: rotateY(0) scale(1.1);
         --webkit-transform: rotateY(0) scale(1.1);
         z-index: 2;
-        box-shadow: 0 10px 10px black;
+        box-shadow: 0 10px 10px #E50914;
+        &:hover {
+            box-shadow: 0 10px 10px #E50914;
+        }
     }
     .active ~ .nominatedMovie{
         transform: rotateY(-45deg);
         --webkit-transform: rotateY(-45deg);
-        z-index: 1;
+        z-index: -1;
         box-shadow: 15px 10px 10px black;
+        &:hover {
+            box-shadow: 15px 10px 10px #E50914;
+        }
+    }
     }
 `
 

@@ -8,7 +8,7 @@ const StyledSearchResults = styled.div`
     flex-direction: column;
     overflow-y: scroll;
     height: calc(100vh - 100px);
-    padding-bottom: 101px;
+    padding-bottom: 51px;
     border-right: 2px solid #E50914;
 `
 

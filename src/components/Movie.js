@@ -12,6 +12,9 @@ const StyledMovie = styled.div`
     color: white;
     text-align: center;
     background-color: rgba(20,20,20);
+    border-bottom: 1px solid black;
+    transition: 0.7s;
+    cursor: pointer;
     img {
         width: 120px;
         height: 150px;
@@ -26,23 +29,30 @@ const StyledMovie = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 85%;
+        width: 100%;
         padding: 1rem;
     }
-    button {
+    button.addBTN {
         height: 150px;
-        width: 15%;
         background-color: #E50914;
         border: none;
         outline: none;
+        transition: 0.6s ease-out;
+        display: hidden;
+        overflow: hidden;
+        width: 0;
+        padding: 0;
     }
-    border-bottom: 1px solid black;
-    transition: 0.75s;
     &:hover {
-        cursor: pointer;
         box-shadow: 0 0 7px 2px #E50914;
         z-index: 2;
     }
+    &:hover button {
+            display: inline-block;
+            width: 15%;
+            border: none;
+            overflow: hidden;
+        }
 `
 
 const StyledNominatedMovie = styled.div`
@@ -130,7 +140,7 @@ const Movie = (props) => {
                     <div className='movieName'>
                         <h2>{`${movie.Title} (${movie.Year})`}</h2>
                     </div>
-                    <button>Add</button>
+                    <button className='addBTN'>Add</button>
                 </div>
             </StyledMovie>
     )
