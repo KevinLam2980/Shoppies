@@ -54,7 +54,7 @@ const StyledMovie = styled.div`
             border: none;
             overflow: hidden;
         }
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
         height: 100px;
         img {
             height: 100px;
@@ -108,6 +108,12 @@ const StyledNominatedMovie = styled.div`
         align-items: center;
         padding: 0.5rem;
     }
+    @media (max-width: 400px) {
+        max-height: 125px;
+  }
+  @media (max-width: 500px) {
+        max-height: 150px;
+  }
     @media (max-width: 1200px) {
     font-size: 0.85rem;
   }

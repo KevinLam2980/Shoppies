@@ -46,11 +46,10 @@ export const shoppiesReducer = (state = initialAppState, action) => {
         case REMOVE_MOVIE:
             return {
                 ...state,
+                movieInfo: null,
                 nominatedMovies: state.nominatedMovies.filter(movie => {
                     return movie.imdbID !== action.payload.imdbID
-                }),
-                // searchResults: [action.payload, ...state.searchResults],
-                movieInfo: null
+                })
             }
         case GET_MOVIE_START:
             return {

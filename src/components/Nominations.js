@@ -11,6 +11,7 @@ const StyledNominations = styled.div`
     align-items: center;
     perspective: 700px;
     padding: 1rem;
+    transition: 1s;
 
     .nominatedMovie {
         transition: 0.5s ease-out;

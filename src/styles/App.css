@@ -56,11 +56,30 @@ button:active, button:focus, a:active, a:focus {
 	z-index: 9999 !important;
 }
 
+@media (max-width: 800px) {
+	.notification-wrapper {
+		width: 250px;
+	}
+	.notification-item {
+		font-size: 0.9rem;
+		width: 250px !important;
+	}
+}
+@media (max-width: 500px) {
+	.notification-item {
+		font-size: 0.85rem;
+		width: 200px !important;
+	}
+	.notification-wrapper {
+		width: 200px;
+	}
+}
+
 .notification-item {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.425);
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     animation: SlideLeft 0.4s;
     animation-fill-mode: forwards;
 	width: 300px;

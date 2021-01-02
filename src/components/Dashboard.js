@@ -4,6 +4,8 @@ import NominationSection from './NominationSection'
 import Nav from './Nav'
 import styled from 'styled-components'
 import {Container} from '../styles/CommonComponents'
+import {connect} from 'react-redux'
+
 
 const StyledDashboard = styled.div`
     display: flex;
@@ -20,7 +22,7 @@ const StyledDashboard = styled.div`
         height: 100%;
         width: 100%;
     }
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
         height: 100%;
         overflow: scroll;
         div#mainSection {
@@ -46,4 +48,10 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+const mapStateToProps = state => {
+    return {
+        state: state
+    }
+  }
+
+export default connect(mapStateToProps, {})(Dashboard)

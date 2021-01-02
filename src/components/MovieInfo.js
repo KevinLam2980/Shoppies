@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {removeNominatedMovie} from '../state/actions'
+import { connect } from 'react-redux'
+import { removeNominatedMovie } from '../state/actions'
 import styled from 'styled-components'
-import {useNotification} from './notifications/NotificationsProvider'
+import { useNotification } from './notifications/NotificationsProvider'
 
 const StyledMovieInfo = styled.div`
 height: 65%;
@@ -38,9 +38,16 @@ overflow-y: hidden;
         padding: 1rem;
         background-color: rgba(20,20,20);
         box-shadow: 0 7px 7px -6px #E50914;
+        @media (max-width: 500px) {
+            flex-direction: column;
+        }
     }
     .movieDetailsLeft, .movieDetailsRight, .movieDetailsMiddle{
         width: 33.3%;
+        @media (max-width: 500px) {
+            width: 100%;
+            margin: 0;
+        }
     }
     .movieDetailsMiddle{
         margin: 0 0.5rem;
@@ -101,7 +108,7 @@ button.removeBTN {
     `
 
 const MovieInfo = (props) => {
-    const {movieInfo, removeNominatedMovie} = props
+    const { movieInfo, removeNominatedMovie } = props
     const dispatchNotification = useNotification()
 
     const RemoveMovie = () => {
@@ -113,63 +120,63 @@ const MovieInfo = (props) => {
     }
 
     if (movieInfo !== null) {
-          return (
-        <StyledMovieInfo id='movieData'>
-            <div id='movieDataMain'>
-                <div className='movieDescription'>
-                    <p>{movieInfo.Plot}</p>
-                </div>
-                <div className='movieDetails'>
-                    <div className='movieDetailsLeft'>
-                        <p>Genre: {movieInfo.Genre}</p>
-                        <p>Rated: {movieInfo.Rated}</p>
-                        <p>Director: {movieInfo.Director}</p>
-                        <p>Released: {movieInfo.Released}</p>
-                        <p>Writer(s): {movieInfo.Writer}</p>
+        return (
+            <StyledMovieInfo id='movieData'>
+                <div id='movieDataMain'>
+                    <div className='movieDescription'>
+                        <p>{movieInfo.Plot}</p>
                     </div>
-                    <div className='movieDetailsMiddle'>
-                        <p>Actor(s): {movieInfo.Actors}</p>
-                        <p>Production: {movieInfo.Production}</p>
-                        <p>Award(s): {movieInfo.Awards}</p>
-                        <p>Country: {movieInfo.Country}</p>
+                    <div className='movieDetails'>
+                        <div className='movieDetailsLeft'>
+                            <p>Genre: {movieInfo.Genre}</p>
+                            <p>Rated: {movieInfo.Rated}</p>
+                            <p>Director: {movieInfo.Director}</p>
+                            <p>Released: {movieInfo.Released}</p>
+                            <p>Writer(s): {movieInfo.Writer}</p>
+                        </div>
+                        <div className='movieDetailsMiddle'>
+                            <p>Actor(s): {movieInfo.Actors}</p>
+                            <p>Production: {movieInfo.Production}</p>
+                            <p>Award(s): {movieInfo.Awards}</p>
+                            <p>Country: {movieInfo.Country}</p>
+                        </div>
+                        <div className='movieDetailsRight'>
+                            <p>Language: {movieInfo.Language}</p>
+                            <p>Runtime: {movieInfo.Runtime}</p>
+                            <p>Metascore: {movieInfo.Metascore}</p>
+                            <p>imdbRating: {movieInfo.imdbRating}</p>
+                            <p>imdbVotes: {movieInfo.imdbVotes}</p>
+                        </div>
                     </div>
-                    <div className='movieDetailsRight'>
-                        <p>Language: {movieInfo.Language}</p>
-                        <p>Runtime: {movieInfo.Runtime}</p>
-                        <p>Metascore: {movieInfo.Metascore}</p>
-                        <p>imdbRating: {movieInfo.imdbRating}</p>
-                        <p>imdbVotes: {movieInfo.imdbVotes}</p>
-                    </div>      
                 </div>
-           </div>
-            <div id='movieButtons'>
-                <a 
-                className='imdbBTN'
-                href={`https://www.imdb.com/title/${movieInfo.imdbID}/?ref_=fn_al_tt_1`}
-                target="_blank"
-                rel="noopener noreferrer"
-                >IMDB</a>
-                <button
-                className='removeBTN'
-                onClick={RemoveMovie}
-                >Remove</button>
-            </div>
-    
-        </StyledMovieInfo>
-    )
+                <div id='movieButtons'>
+                    <a
+                        className='imdbBTN'
+                        href={`https://www.imdb.com/title/${movieInfo.imdbID}/?ref_=fn_al_tt_1`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >IMDB</a>
+                    <button
+                        className='removeBTN'
+                        onClick={RemoveMovie}
+                    >Remove</button>
+                </div>
+
+            </StyledMovieInfo>
+        )
     } else {
         return (
             <StyledMovieInfo id='movieData'>
             </StyledMovieInfo>
         )
     }
-  
+
 }
 
 const mapStateToProps = state => {
     return {
         movieInfo: state.movieInfo
     }
-  }
+}
 
-export default connect(mapStateToProps, {removeNominatedMovie})(MovieInfo)
+export default connect(mapStateToProps, { removeNominatedMovie })(MovieInfo)

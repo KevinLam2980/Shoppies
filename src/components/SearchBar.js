@@ -27,6 +27,9 @@ const StyledSearchBar = styled.div`
         fill: #E50914;
         margin-right: 0.5rem;
     }
+    @media (max-width: 800px) {
+            padding: 1.5rem;
+        }
 `
 
 

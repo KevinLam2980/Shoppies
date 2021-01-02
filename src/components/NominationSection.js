@@ -28,7 +28,7 @@ const StyledNominationSection = styled.div`
     #nominatedMovieView {
         height: calc(100vh - 100px);
     }
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
         height: 100%;
         width: 100%;
         div#nominationSectionHeader {
@@ -36,6 +36,7 @@ const StyledNominationSection = styled.div`
             background-color: black;
 
         }
+        
 }
 `
 

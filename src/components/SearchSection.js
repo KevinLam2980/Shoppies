@@ -19,7 +19,7 @@ const StyledSearchSection = styled.div`
         height: 100px;
         border-bottom: 2px solid #E50914;
     }
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
         height: calc(60vh - 75px);
         width: 100%;
         div#searchHeader {
