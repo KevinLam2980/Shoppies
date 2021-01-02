@@ -46,7 +46,7 @@ overflow-y: hidden;
         width: 33.3%;
         @media (max-width: 500px) {
             width: 100%;
-            margin: 0;
+            margin: 0 !important;
         }
     }
     .movieDetailsMiddle{
@@ -62,7 +62,7 @@ overflow-y: hidden;
         }
     }
 }
-button.removeBTN, .submitBTN {
+button.removeBTN, button.submitBTN {
     transition: 0.7s;
     font-size: 1rem;
     border: 2px solid #E50914;
@@ -90,6 +90,7 @@ button.removeBTN, .submitBTN {
     color: white;
     padding: 0.5rem 1rem;
     text-decoration: none;
+    text-align: center;
     &:active, &:focus {
         outline: 0;
     }
@@ -100,8 +101,23 @@ button.removeBTN, .submitBTN {
         box-shadow: 0 0 7px 2px black;
     }
 }
+    #movieButtons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+        @media (max-width: 500px) {
+            flex-direction: column;
+            * {
+                width: 100%;
+                margin: 0 0 5px;
+            }
+    }
+    }
+
+    }
     @media (max-width: 1050px) {
-        .imdbBTN, button.removeBTN {
+        .imdbBTN, button.removeBTN, button.submitBTN {
               font-size: 0.8rem;
         }
 }

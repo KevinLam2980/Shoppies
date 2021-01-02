@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { nominateMovie, getMovieInfo } from '../state/actions'
 import styled from 'styled-components'
-import {useNotification} from './notifications/NotificationsProvider'
+import { useNotification } from './notifications/NotificationsProvider'
 
 const StyledMovie = styled.div`
     display: flex;
@@ -98,21 +98,22 @@ const StyledNominatedMovie = styled.div`
     cursor: pointer;
     img {
         width: 100%;
-        height: 80%;
+        height: 75%;
         align-self: flex-start
     }
     .nominatedMovieName {
-        height: 20%;
+        height: 25%;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
     }
     @media (max-width: 400px) {
-        max-height: 125px;
+        max-width: 100px;
   }
   @media (max-width: 500px) {
-        max-height: 150px;
+        max-height: 200px;
+        max-width: 125px;
   }
     @media (max-width: 1200px) {
     font-size: 0.85rem;
@@ -167,7 +168,7 @@ const Movie = (props) => {
             document.querySelector(`#${nominatedMovies[nominatedMovies.length - 1].imdbID}`).classList.add('active')
             getMovieInfo(`${nominatedMovies[nominatedMovies.length - 1].imdbID}`)
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nominatedMovies])
 
     if (nominated === true) {
