@@ -1,37 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {searchMovie} from '../state/actions'
-import styled from 'styled-components'
-
-const StyledSearchBar = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    input {
-        color: white;
-        background-color: black;
-        border: 2px solid #E50914;
-        width: 50%;
-        min-width: 200px;
-        border-radius: 10px;
-        text-align: center;
-        padding: 0.5rem 0.5rem;
-        font-size: 1.1rem;
-        &:active, &:focus {
-            outline: none;
-        }
-    }
-    .svg-icon {
-        width: 25px;
-        fill: #E50914;
-        margin-right: 0.5rem;
-    }
-    @media (max-width: 800px) {
-            padding: 1.5rem;
-        }
-`
-
+import {StyledSearchBar} from '../styles/ComponentStyles'
 
 const SearchBar = (props) => {
     const [searchValue, setSearchValue] = useState("")

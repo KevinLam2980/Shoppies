@@ -1,131 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { nominateMovie, getMovieInfo } from '../state/actions'
-import styled from 'styled-components'
 import { useNotification } from './notifications/NotificationsProvider'
+import { StyledMovie, StyledNominatedMovie } from '../styles/ComponentStyles'
 
-const StyledMovie = styled.div`
-    display: flex;
-    height: 150px;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-    text-align: center;
-    background-color: rgba(20,20,20);
-    border-bottom: 1px solid black;
-    transition: 0.7s;
-    cursor: pointer;
-    img {
-        width: 120px;
-        height: 150px;
-        border: 1px solid black;
-    }
-    .movieDetails {
-        width: calc(100% - 120px);
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .movieName {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 1rem;
-    }
-    button.addBTN {
-        height: 150px;
-        background-color: #E50914;
-        border: none;
-        outline: none;
-        transition: 0.6s ease-out;
-        display: hidden;
-        overflow: hidden;
-        width: 0;
-        padding: 0;
-    }
-    &:hover {
-        box-shadow: 0 0 7px 2px #E50914;
-        z-index: 2;
-    }
-    &:hover button {
-            display: inline-block;
-            width: 15%;
-            border: none;
-            overflow: hidden;
-        }
-    @media (max-width: 800px) {
-        height: 100px;
-        img {
-            height: 100px;
-        }
-        .movieDetails {
-        width: calc(100% - 75px);
-    }
-        button.addBTN {
-            height: 100px;
-            border: 1px solid black;
-            outline: none;
-            width: 15%;
-    }
-    }
-    @media (max-width: 430px) {
-        height: 100px;
-        img {
-            height: 100px;
-            width: 80px;
-        }
-        button.addBTN {
-            height: 100px;
-            border: 1px solid black;
-            outline: none;
-            width: 20%;
-    }
-    }
-`
-
-const StyledNominatedMovie = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 150px;
-    max-width: 175px;
-    height: 90%;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    background-color: rgba(20,20,20); 
-    font-size: 1rem;
-    cursor: pointer;
-    img {
-        width: 100%;
-        height: 75%;
-        align-self: flex-start
-    }
-    .nominatedMovieName {
-        height: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
-    }
-    @media (max-width: 400px) {
-        max-width: 100px;
-  }
-  @media (max-width: 500px) {
-        max-height: 200px;
-        max-width: 125px;
-  }
-    @media (max-width: 1200px) {
-    font-size: 0.85rem;
-  }
-    @media (max-width: 1050px) {
-        font-size: 0.8rem;
-    }
-  
-    /* @media (max-width: 768px) {
-    font-size: 0.5rem;
-  } */
-`
 
 
 const Movie = (props) => {
@@ -148,8 +26,7 @@ const Movie = (props) => {
                 type: 'SUCCESS',
                 message: `'${movie.Title}' added to nominations.`
             })
-        }
-        else {
+        } else {
             dispatchNotification({
                 type: 'ERROR',
                 message: 'You can only nominate 5 movies.'

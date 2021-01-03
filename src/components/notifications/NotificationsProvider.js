@@ -1,22 +1,22 @@
-import React, {createContext, useContext, useReducer} from "react";
-import {v4} from "uuid";
-import Notification from "./Notifications";
+import React, { createContext, useContext, useReducer } from "react"
+import { v4 } from "uuid"
+import Notification from "./Notifications"
 
-const NotificationContext = createContext();
+const NotificationContext = createContext()
 
 const NotificationProvider = (props) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "ADD_NOTIFICATION":
-        return [...state, {...action.payload}];
+        return [...state, { ...action.payload }]
       case "REMOVE_NOTIFICATION":
-        return state.filter(badge => badge.id !== action.id);
+        return state.filter(badge => badge.id !== action.id)
       default:
         return state
     }
-  }, []);
+  }, [])
 
-  return(
+  return (
     <NotificationContext.Provider value={dispatch}>
       <div className="notification-wrapper">
         {state.map((note) => {
@@ -26,7 +26,7 @@ const NotificationProvider = (props) => {
       {props.children}
     </NotificationContext.Provider>
   )
-};
+}
 
 export const useNotification = () => {
   const dispatch = useContext(NotificationContext);
@@ -40,6 +40,6 @@ export const useNotification = () => {
       }
     })
   }
-};
+}
 
-export default NotificationProvider;
+export default NotificationProvider

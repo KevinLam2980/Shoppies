@@ -34,7 +34,6 @@ export const getMovieInfo = movieId => dispatch => {
     dispatch({type: GET_MOVIE_START})
     axios.get( `https://www.omdbapi.com/?apikey=dd7713c4&i=${movieId}&plot=full`)
     .then(res => {
-        console.log(res.data)
         dispatch({type: GET_MOVIE_SUCCESS, payload: res.data})
     })
     .catch(err => {

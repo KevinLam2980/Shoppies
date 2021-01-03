@@ -1,44 +1,8 @@
 import React from 'react'
 import Nominations from './Nominations'
 import MovieInfo from './MovieInfo'
-import styled from 'styled-components'
+import {StyledNominationSection} from '../styles/ComponentStyles'
 
-const StyledNominationSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 60%;
-    overflow-y: scroll;
-    background-color: #1f1f1f;
-
-    #nominationSectionHeader {
-        height: 100px;
-        width: 100%;
-        border-bottom: 2px solid #E50914;
-        display: flex;
-        background-color: rgba(20,20,20);
-        justify-content: center;
-        align-items: center;
-        h2 {
-            color: white;
-            font-size: 2rem;
-        }
-    }
-
-    #nominatedMovieView {
-        height: calc(100vh - 100px);
-    }
-    @media (max-width: 800px) {
-        height: 100%;
-        width: 100%;
-        div#nominationSectionHeader {
-            height: 75x;
-            background-color: black;
-
-        }
-        
-}
-`
 
 const NominationSection = () => {
 
@@ -51,7 +15,6 @@ const NominationSection = () => {
                 <Nominations/>
                 <MovieInfo/>
             </div>
-           
         </StyledNominationSection>
     )
 }

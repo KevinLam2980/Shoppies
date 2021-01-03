@@ -1,127 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { removeNominatedMovie } from '../state/actions'
-import styled from 'styled-components'
 import { useNotification } from './notifications/NotificationsProvider'
+import { StyledMovieInfo } from '../styles/ComponentStyles'
 
-const StyledMovieInfo = styled.div`
-height: 65%;
-padding: 1rem 2rem 0;
-color: white;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-overflow-y: hidden;
-
-#movieDataMain {
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    margin-bottom: 1rem;
-    height: calc(100% - 125px);
-    .movieDescription {
-        width: 100%;
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        box-shadow: 0 7px 7px -6px #E50914;
-        background-color: rgba(20,20,20);
-        p {
-            padding-top: 0.5rem;
-            line-height: 1.5;
-        }
-    }
-    .movieDetails {
-        display: flex;
-        width: 100%;
-        line-height: 1.2;
-        padding: 1rem;
-        background-color: rgba(20,20,20);
-        box-shadow: 0 7px 7px -6px #E50914;
-        @media (max-width: 500px) {
-            flex-direction: column;
-        }
-    }
-    .movieDetailsLeft, .movieDetailsRight, .movieDetailsMiddle{
-        width: 33.3%;
-        @media (max-width: 500px) {
-            width: 100%;
-            margin: 0 !important;
-        }
-    }
-    .movieDetailsMiddle{
-        margin: 0 0.5rem;
-    }
-    .movieDetailsLeft *, .movieDetailsRight *, .movieDetailsMiddle *  {
-        padding: 0.5rem 0.75rem;
-        border-bottom: 1px solid #1f1f1f;
-    }
-    @media (max-width: 1050px) {
-        .movieDetails {
-             font-size: 0.9rem;
-        }
-    }
-}
-button.removeBTN, button.submitBTN {
-    transition: 0.7s;
-    font-size: 1rem;
-    border: 2px solid #E50914;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    &:active, &:focus {
-        outline: 0;
-    }
-    &:hover {
-        background-color: #E50914;
-        border: none;
-        color: black;
-        box-shadow: 0 0 7px 2px black;
-    }
-}
-.imdbBTN {
-    transition: 0.7s;
-    font-size: 1rem;
-    border: 2px solid #E50914;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    text-align: center;
-    &:active, &:focus {
-        outline: 0;
-    }
-    &:hover {
-        background-color: #E50914;
-        border: none;
-        color: black;
-        box-shadow: 0 0 7px 2px black;
-    }
-}
-    #movieButtons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        width: 100%;
-        @media (max-width: 500px) {
-            flex-direction: column;
-            * {
-                width: 100%;
-                margin: 0 0 5px;
-            }
-    }
-    }
-
-    }
-    @media (max-width: 1050px) {
-        .imdbBTN, button.removeBTN, button.submitBTN {
-              font-size: 0.8rem;
-        }
-}
-    `
 
 const MovieInfo = (props) => {
     const { movieInfo, removeNominatedMovie, nominatedMovies } = props
@@ -184,14 +66,13 @@ const MovieInfo = (props) => {
                         onClick={RemoveMovie}
                     >Remove movie</button>
                     {
-                        nominatedMovies && nominatedMovies.length === 5 ? 
-                        <button
-                        className='submitBTN'
-                        onClick={submitNominations}
-                        >Submit nominations</button> : null
+                        nominatedMovies && nominatedMovies.length === 5 ?
+                            <button
+                                className='submitBTN'
+                                onClick={submitNominations}
+                            >Submit nominations</button> : null
                     }
                 </div>
-
             </StyledMovieInfo>
         )
     } else {

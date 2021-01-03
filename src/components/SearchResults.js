@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Movie from './Movie'
-import styled from 'styled-components'
-
-const StyledSearchResults = styled.div`
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    height: calc(100vh - 100px);
-    padding-bottom: 51px;
-    border-right: 2px solid #E50914;
-    @media (max-width: 800px) {
-        border: none;
-        padding-bottom: 1px;
-    }
-`
+import {StyledSearchResults} from '../styles/ComponentStyles'
 
 const SearchResults = (props) => {
     const [movieIds, setMovieIds] = useState([])
