@@ -16,7 +16,7 @@ const Notification = props => {
         clearInterval(id)
         return prev
       })
-    }, 20)
+    }, 15)
 
     setIntervalID(id)
   }
