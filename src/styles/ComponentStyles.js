@@ -128,6 +128,7 @@ img {
     align-items: center;
     padding: 0.5rem;
 }
+
 @media (max-width: 400px) {
     max-width: 100px;
 }
@@ -153,6 +154,11 @@ justify-content: flex-start;
 align-items: center;
 overflow-y: hidden;
 
+button.submitBTN:disabled {
+    background-color: grey;
+    border: grey;
+    
+}
 #movieDataMain {
     display: flex;
     flex-direction: column;

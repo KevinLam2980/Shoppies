@@ -31,6 +31,7 @@ const SearchBar = (props) => {
                 onChange={onChangeHandler}
                 value={searchValue}
                 placeholder='Search'
+                aria-label='Movie search'
             >
             </input> 
         </StyledSearchBar>

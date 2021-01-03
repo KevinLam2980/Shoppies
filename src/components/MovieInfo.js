@@ -72,7 +72,12 @@ const MovieInfo = (props) => {
                             <button
                                 className='submitBTN'
                                 onClick={submitNominations}
-                            >Submit nominations</button> : null
+                            >Submit nominations</button> : 
+                            <button
+                            className='submitBTN'
+                            onClick={submitNominations}
+                            disabled
+                        >Submit nominations</button>
                     }
                 </div>
             </StyledMovieInfo>
