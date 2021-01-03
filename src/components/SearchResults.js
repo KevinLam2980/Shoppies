@@ -7,6 +7,7 @@ const SearchResults = (props) => {
     const [movieIds, setMovieIds] = useState([])
     const { nominatedMovies, searchRes } = props
 
+    // update search results with latest api request
     useEffect(() => {
         let movies = []
         nominatedMovies.forEach(movie => {

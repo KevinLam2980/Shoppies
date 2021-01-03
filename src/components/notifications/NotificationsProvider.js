@@ -28,6 +28,7 @@ const NotificationProvider = (props) => {
   )
 }
 
+// export closure for simple dispatching of notification from anywhere in the application with only 1 import of useNotification
 export const useNotification = () => {
   const dispatch = useContext(NotificationContext);
 

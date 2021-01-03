@@ -9,6 +9,7 @@ const Nominations = (props) => {
     const {nominatedMovies} = props
     const dispatchNotification = useNotification()
 
+    // notification when 5 movies have been chosen
     useEffect(() => {
         if (nominatedMovies.length === 5) {
             dispatchNotification({

@@ -9,6 +9,7 @@ const MovieInfo = (props) => {
     const { movieInfo, removeNominatedMovie, nominatedMovies } = props
     const dispatchNotification = useNotification()
 
+    // remove movie from nominations list
     const RemoveMovie = () => {
         removeNominatedMovie(movieInfo)
         dispatchNotification({
@@ -17,6 +18,7 @@ const MovieInfo = (props) => {
         })
     }
 
+    // submit nominations after 5 movies have been selected and submit button is pressed
     const submitNominations = () => {
         dispatchNotification({
             type: "SUCCESS",

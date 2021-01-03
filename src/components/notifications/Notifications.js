@@ -5,6 +5,7 @@ const Notification = props => {
   const [width, setWidth] = useState(0)
   const [intervalID, setIntervalID] = useState(null)
 
+  // start notification timer
   const handleStartTimer = () => {
     const id = setInterval(() => {
       setWidth(prev => {
@@ -20,10 +21,12 @@ const Notification = props => {
     setIntervalID(id)
   }
 
+  // pause notification timer on hover
   const handlePauseTimer = () => {
     clearInterval(intervalID)
   }
 
+  // trigger removal of notification
   const handleCloseNotification = () => {
     handlePauseTimer()
     setExit(true)
@@ -35,6 +38,7 @@ const Notification = props => {
     }, 400)
   }
 
+  // remove notification once it is fully off the page
   useEffect(() => {
     if (width === 100) {
       handleCloseNotification()
@@ -42,6 +46,7 @@ const Notification = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width])
 
+  // start the timer when notification is rendered
   useEffect(() => {
     handleStartTimer()
   }, [])

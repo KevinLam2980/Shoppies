@@ -10,7 +10,9 @@ const Movie = (props) => {
     const { movie, nominateMovie, nominatedMovies, nominated, getMovieInfo } = props
     const dispatchNotification = useNotification()
 
+    // allows user to click to view desired nominated movie
     const choosediv = (e) => {
+        // removes active class from all other elements to make sure there is only one active class element.
         if (document.querySelectorAll('.active').length !== 0) {
             let selectedEls = document.querySelectorAll('.active')
             selectedEls.forEach(element => {
@@ -19,7 +21,10 @@ const Movie = (props) => {
         }
         document.querySelector(`#${movie.imdbID}`).classList.toggle('active')
     }
+
+    // allows user to click on search result movie to nominate it
     const nominate = () => {
+        // check to make sure there are no more than 5 movies
         if (nominatedMovies.length < 5) {
             nominateMovie(movie)
             dispatchNotification({
@@ -34,6 +39,7 @@ const Movie = (props) => {
         }
     }
 
+    // auto select last movie in nominated list when adding or removing movie
     useEffect(() => {
         if (nominatedMovies.length !== 0) {
             if (document.querySelectorAll('.active').length !== 0) {
@@ -48,6 +54,7 @@ const Movie = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nominatedMovies])
 
+    // displays movie cards in nomination section
     if (nominated === true) {
         return (
             <StyledNominatedMovie
@@ -64,6 +71,7 @@ const Movie = (props) => {
                 </div>
             </StyledNominatedMovie>
         )
+      // displays movie cards in search results section   
     } else {
         return (
             <StyledMovie

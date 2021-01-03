@@ -7,6 +7,7 @@ const SearchBar = (props) => {
     const [searchValue, setSearchValue] = useState("")
     const {searchMovie, nominatedMovies} = props
 
+    // change search value state on input change, runs searchMovie dispatch on change for live search feel
     const onChangeHandler = (e) => {
         setSearchValue(e.target.value)
       }
