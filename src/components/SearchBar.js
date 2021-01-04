@@ -30,7 +30,7 @@ const SearchBar = (props) => {
                 name='searchMovie'
                 onChange={onChangeHandler}
                 value={searchValue}
-                placeholder='Search'
+                placeholder='Search a movie'
                 aria-label='Movie search'
             >
             </input> 

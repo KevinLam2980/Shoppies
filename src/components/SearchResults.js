@@ -18,7 +18,7 @@ const SearchResults = (props) => {
 
     return (
         <StyledSearchResults>
-            {
+            {   
                 searchRes && searchRes.length > 0 ? searchRes
                     .filter(movie => {
                         return !movieIds.includes(movie.imdbID)
@@ -36,7 +36,8 @@ const SearchResults = (props) => {
 const mapStateToProps = state => {
     return {
         searchRes: state.searchResults,
-        nominatedMovies: state.nominatedMovies
+        nominatedMovies: state.nominatedMovies,
+        movieSearchLoading: state.movieSearchLoading
     }
 }
 

@@ -94,7 +94,8 @@ const MovieInfo = (props) => {
 const mapStateToProps = state => {
     return {
         movieInfo: state.movieInfo,
-        nominatedMovies: state.nominatedMovies
+        nominatedMovies: state.nominatedMovies,
+        getInfoLoading: state.getInfoLoading
     }
 }
 
