@@ -8,6 +8,7 @@ export const REMOVE_MOVIE = 'REMOVE_MOVIE'
 export const SEARCH_START = 'SEARCH_START'
 export const SEARCH_MOVIE_SUCCESS = 'SEARCH_MOVIE_SUCCESS'
 export const SEARCH_MOVIE_FAIL = 'SEARCH_MOVIE_FAIL'
+export const SET_LOCALSTORAGE_STATE = 'SET_LOCALSTORAGE_STATE'
 
 // add search result movie to nomination list
 export const nominateMovie = movie => dispatch => {
@@ -43,4 +44,9 @@ export const getMovieInfo = movieId => dispatch => {
         console.error(err)
         dispatch({type: GET_MOVIE_FAIL})
     })
+}
+
+// set state if there is localstorage items
+export const setLocalStorageState = storageState => dispatch => {
+    dispatch({type: SET_LOCALSTORAGE_STATE, payload: storageState})
 }

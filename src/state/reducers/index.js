@@ -6,7 +6,8 @@ import {
     REMOVE_MOVIE,
     SEARCH_START,
     SEARCH_MOVIE_SUCCESS,
-    SEARCH_MOVIE_FAIL
+    SEARCH_MOVIE_FAIL,
+    SET_LOCALSTORAGE_STATE
         } from '../actions'
 
 const initialAppState = {
@@ -68,6 +69,8 @@ export const shoppiesReducer = (state = initialAppState, action) => {
                 getInfoLoading: false,
                 movieInfo: null
             }
+        case SET_LOCALSTORAGE_STATE:
+            return action.payload
         default:
             return state
     }
