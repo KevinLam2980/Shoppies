@@ -5,7 +5,7 @@ Link to Shopify Challenge: https://shoppies-movies-app.vercel.app
 Project Github: https://github.com/KevinLam2980/Shoppies  
 Whimsical wireframe plan: https://whimsical.com/shoppies-Vzz9TQtnkVb5iR4kJsTda@2Ux7TurymNqiVnH8kayk
 
-Hello! Welcome to my interpretation of the Shoppies application!
+Hello! Welcome to my interpretation of the Shoppies application! Shoppies is a web application that allows users to select 5 movies they think are worthy of an award, nominate them, and submit them. The application also allows users to see details about movie, such as the plot, writers, actors, ratings, genre, and more. 
 
 Instructions for use: 
 1) Type in a movie name (spaces are supported), and allow the search results to populate with the movies of your desire. Some movies wont load until the full name is typed in as a limitation of the API, but live search functionality is active in the sense that a get request will be called upon every onchange of the search input. 
